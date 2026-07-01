@@ -1,2 +1,566 @@
-<h1>Нейронка</h1>
-<p>Сайт скоро будет готов</p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Нейронка — образовательный центр</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #1e293b;
+      background: #f8fbff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0ea5e9;
+    }
+
+    .logo span {
+      color: #f97316;
+    }
+
+    nav a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #ec4899;
+    }
+
+    .hero {
+      padding: 70px 8%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      background: linear-gradient(135deg, #e0f7ff, #fff7ed, #fdf2f8);
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: #0f172a;
+    }
+
+    .hero-text h1 span {
+      color: #ec4899;
+    }
+
+    .hero-text p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #475569;
+      max-width: 600px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #f97316;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #0ea5e9;
+      border: 2px solid #0ea5e9;
+    }
+
+    .btn-secondary:hover {
+      background: #0ea5e9;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 20px 50px rgba(14, 165, 233, 0.25);
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      font-size: 18px;
+      color: #64748b;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .about {
+      background: white;
+    }
+
+    .about-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #ffffff, #eff6ff);
+      padding: 36px;
+      border-radius: 28px;
+      border: 1px solid #dbeafe;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .courses {
+      background: #f8fbff;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 26px;
+    }
+
+    .card-content h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    .card-content p {
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #fdf2f8;
+      color: #ec4899;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .advantages {
+      background: white;
+    }
+
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .advantage {
+      background: #f8fbff;
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid #e0f2fe;
+      text-align: center;
+    }
+
+    .advantage .icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .advantage h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .advantage p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .trial {
+      background: linear-gradient(135deg, #0ea5e9, #ec4899);
+      color: white;
+      text-align: center;
+    }
+
+    .trial h2 {
+      font-size: 40px;
+      margin-bottom: 18px;
+    }
+
+    .trial p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .trial .btn {
+      background: white;
+      color: #ec4899;
+    }
+
+    .contacts {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    .contacts h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .contacts p {
+      color: #cbd5e1;
+      margin-bottom: 28px;
+      font-size: 18px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      background: #1e293b;
+      color: white;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid #334155;
+      transition: 0.3s;
+    }
+
+    .contact-links a:hover {
+      background: #f97316;
+      border-color: #f97316;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      text-align: center;
+      padding: 22px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 50px 6%;
+      }
+
+      .hero-text h1 {
+        font-size: 38px;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .advantage-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .logo {
+        font-size: 24px;
+      }
+
+      nav {
+        text-align: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px 6px;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .trial h2 {
+        font-size: 30px;
+      }
+
+      .advantage-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Нейро<span>нка</span></div>
+
+    <nav>
+      <a href="#about">О центре</a>
+      <a href="#courses">Курсы</a>
+      <a href="#advantages">Почему мы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Образовательный центр <span>для детей и взрослых</span></h1>
+        <p>
+          Учим работать с искусственным интеллектом, развиваем логику,
+          стратегическое мышление, математику, творчество и проектные навыки.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="https://t.me/neuronka_school" target="_blank">Записаться на занятие</a>
+          <a class="btn btn-secondary" href="#courses">Смотреть курсы</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="hero.jpg" alt="Образовательный центр Нейронка">
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="section-title">
+        <h2>Что такое «Нейронка»</h2>
+        <p>Современное пространство, где учатся думать, создавать и применять знания на практике.</p>
+      </div>
+
+      <div class="about-box">
+        <p>
+          «Нейронка» — это образовательный центр для детей от 6 лет и взрослых.
+          Здесь можно изучать нейросети, го, шашки, математику, рисование,
+          робототехнику и проектную деятельность. Мы помогаем ученикам не просто
+          получать знания, а создавать собственные проекты и уверенно пробовать новое.
+        </p>
+      </div>
+    </section>
+
+    <section class="courses" id="courses">
+      <div class="section-title">
+        <h2>Наши направления</h2>
+        <p>Выберите курс, который развивает мышление, креативность и современные навыки.</p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <img src="product1.jpg" alt="Курс по искусственному интеллекту">
+          <div class="card-content">
+            <span class="tag">AI и нейросети</span>
+            <h3>Искусственный интеллект</h3>
+            <p>
+              Учимся создавать тексты, картинки, презентации и идеи с помощью нейросетей.
+              Подходит детям и взрослым.
+            </p>
+            <a class="btn btn-primary" href="mailto:neuronka.school@mail.ru">Узнать подробнее</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="product2.jpg" alt="Го, шашки и математика">
+          <div class="card-content">
+            <span class="tag">Логика и стратегия</span>
+            <h3>Го, шашки и математика</h3>
+            <p>
+              Развиваем внимание, память, стратегическое мышление и умение решать задачи.
+            </p>
+            <a class="btn btn-primary" href="https://vk.com/neuronka_school" target="_blank">Записаться</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="product3.jpg" alt="Робототехника и творчество">
+          <div class="card-content">
+            <span class="tag">Проекты и творчество</span>
+            <h3>Робототехника и рисование</h3>
+            <p>
+              Собираем роботов, рисуем, придумываем проекты и учимся работать в команде.
+            </p>
+            <a class="btn btn-primary" href="https://t.me/neuronka_school" target="_blank">Написать нам</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="advantages" id="advantages">
+      <div class="section-title">
+        <h2>Почему выбирают нас</h2>
+        <p>Мы делаем обучение понятным, интересным и полезным для жизни.</p>
+      </div>
+
+      <div class="advantage-grid">
+
+        <div class="advantage">
+          <div class="icon">🧠</div>
+          <h3>Развитие мышления</h3>
+          <p>Ученики учатся анализировать, рассуждать и находить решения.</p>
+        </div>
+
+        <div class="advantage">
+          <div class="icon">🤖</div>
+          <h3>Современные навыки</h3>
+          <p>Нейросети, робототехника и проектная деятельность.</p>
+        </div>
+
+        <div class="advantage">
+          <div class="icon">🎨</div>
+          <h3>Креативность</h3>
+          <p>Творческие задания помогают раскрывать идеи и воображение.</p>
+        </div>
+
+        <div class="advantage">
+          <div class="icon">👨‍👩‍👧</div>
+          <h3>Для детей и взрослых</h3>
+          <p>Есть занятия для детей от 6 лет, подростков и взрослых.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="trial">
+      <h2>Хотите попробовать?</h2>
+      <p>
+        Запишитесь на пробное занятие и выберите направление:
+        искусственный интеллект, го, шашки, математика, рисование или робототехника.
+      </p>
+      <a class="btn" href="https://t.me/neuronka_school" target="_blank">Написать в Telegram</a>
+    </section>
+
+    <section class="contacts" id="contacts">
+      <h2>Контакты</h2>
+      <p>Свяжитесь с нами удобным способом и запишитесь на первое занятие.</p>
+
+      <div class="contact-links">
+        <a href="https://t.me/neuronka_school" target="_blank">Telegram</a>
+        <a href="https://vk.com/neuronka_school" target="_blank">VK</a>
+        <a href="mailto:neuronka.school@mail.ru">Email</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Нейронка. Образовательный центр для детей и взрослых.</p>
+  </footer>
+
+</body>
+</html>
